@@ -1,15 +1,21 @@
 FROM python:3.9.7-slim-buster
-#Set the working directory to /sample-flask-app
+
+# Set the working directory to /sample-flask-app
 WORKDIR /sample-flask-app
-#Copy the Code from the source to the images' code
-directory COPY . .
-#Install dependencies
+
+# Copy the code from the source to the image's code directory
+COPY . .
+
+# Install dependencies
 RUN pip install -r requirements.txt
-#env variables
+
+# Environment variables
 ENV FLASK_APP=app.py
 ENV FLASK_RUN_HOST=0.0.0.0
 ENV FLASK_ENV=development
-#Expose the port
+
+# Expose the port
 EXPOSE 5000
-#Start the dev server
+
+# Start the development server
 CMD ["flask", "run"]
